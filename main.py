@@ -66,6 +66,15 @@ print(oddelovac)
 if vstup.isdigit() and int(vstup) in range(1, 4):
     index = int(vstup) - 1
     slova = TEXTS[index].split()
+
+    index_slova = 0
+    while index_slova<len(slova):
+        slova[index_slova] = slova[index_slova].strip(",.!?")
+        if not slova[index_slova]:
+            slova.pop(index_slova)
+        else:
+            index_slova += 1
+
     pocet_slov = len(slova)
 
     velka_zac_pismena = 0
@@ -102,7 +111,7 @@ if vstup.isdigit() and int(vstup) in range(1, 4):
     vyskyty = {}
 
     for slovo in slova:
-        delka_slova = len(slovo.strip(".,"))
+        delka_slova = len(slovo)
         if delka_slova in vyskyty:
             vyskyty[delka_slova] += 1
         else:
